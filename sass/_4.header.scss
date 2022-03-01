@@ -1,5 +1,136 @@
 .header {
-	background-color: var(--color-secondary);
+	// background-color: var(--color-secondary);
 	grid-column: container-start/container-end;
-	height: 600px;
+	// height: 600px;
+
+	// Dynamic class
+	&.open .header__menu__line {
+		background-color: transparent;
+	}
+	&.open .header__menu--line::before {
+		transform: rotate(45deg);
+	}
+	&.open .header__menu--line::after {
+		transform: rotate(-45deg);
+	}
+	&.open .header__menu--line::after,
+	&.open .header__menu--line::before {
+		top: 0;
+	}
+	&__overlay {
+		width: 100%;
+		height: 100vh;
+		background-color: var(--color-tertiary);
+		position: fixed;
+		opacity: 0;
+		display: none;
+		z-index: 10;
+	}
+
+	&__nav {
+		height: 7rem;
+		width: 100%;
+		line-height: 7rem;
+		display: flex;
+		justify-content: space-evenly;
+		text-transform: uppercase;
+		overflow: hidden;
+
+		&--logo {
+			padding: 1rem;
+			img {
+				height: 5rem;
+				width: 5rem;
+			}
+		}
+		&--links {
+			display: flex;
+
+			&__item {
+				a:link,
+				a:visited {
+					margin-right: 2vw;
+					padding: 0 1.5rem;
+					display: block;
+					position: relative;
+					transform-style: preserve-3d;
+					transform-origin: top;
+					transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+				a:hover,
+				a:active {
+					transform: rotateX(90deg);
+				}
+
+				a:link:after,
+				a:visited::after {
+					content: attr(data-text);
+					position: absolute;
+					background-color: var(--color-tertiary);
+					left: 0;
+					bottom: -100%;
+					transform: rotateX(-90deg);
+					transform-origin: top;
+					padding: inherit;
+				}
+			}
+			//  direction => downwards
+			&__item:nth-child(odd) {
+				animation: downwards 1s forwards;
+			}
+			//  direction => upwards
+			&__item:nth-child(even) {
+				animation: upwards 1s forwards;
+			}
+
+			//dark mode Togglr button
+			&__toggle-container {
+				display: flex;
+				align-items: center;
+
+				input[type='checkbox'] {
+					position: relative;
+					width: 6rem;
+					height: 3rem;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					background-color: var(--color-quinary);
+					border-radius: 2.5rem;
+					box-shadow: inset 0 0 0.6rem 0.1rem rgb(158, 157, 157);
+				}
+				input:checked[type='checkbox'] {
+					background-color: yellowgreen;
+				}
+				input:not(:checked)[type='checkbox'] {
+					background-color: var(--color-tertiary);
+				}
+			}
+		}
+	}
+}
+
+@keyframes upwards {
+	//  starting point
+	from {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	// ending point
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes downwards {
+	//  starting point
+	from {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	// ending point
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }

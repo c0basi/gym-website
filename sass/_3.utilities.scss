@@ -22,10 +22,10 @@ li {
 	list-style: none;
 }
 
-a,
+a:link,
 a:visited {
 	text-decoration: none;
-	color: var(--color-qyuinary);
+	color: var(--color-quinary);
 	font-weight: font-weight(font-weight-light);
 	letter-spacing: 0.2rem;
 	font-size: font-size(font-size-small);
