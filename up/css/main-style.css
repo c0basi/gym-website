@@ -3,8 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -41,5 +40,82 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.9;
   background-color: var(--color-primary);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: [container-start] 1fr [center-start] repeat(6, [col-start] minmax(min-content, 16.66667rem) [col-end]) [center-end] 1fr [container-end];
+  grid-template-rows: min-content 90vh repeat(9, min-content);
+}
+
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--color-qyuinary);
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  font-size: calc(1.2rem + 0.5vw);
+}
+
+i {
+  color: var(--color-primary);
+  font-size: calc(1.5rem + 2vw);
+}
+
+.header {
+  background-color: var(--color-secondary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.showcase {
+  background-color: var(--color-tertiary);
+  grid-column: container-start/container-end;
+}
+
+.motto {
+  background-color: var(--color-quaternary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.features {
+  background-color: var(--color-secondary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.trainers {
+  background-color: var(--color-tertiary);
+  grid-column: center-start/center-end;
+  height: 600px;
+}
+
+.testimonials {
+  background-color: var(--color-quaternary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.clients {
+  background-color: var(--color-secondary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.register {
+  background-color: var(--color-tertiary);
+  grid-column: container-start/container-end;
+  height: 600px;
+}
+
+.footer {
+  background-color: var(--color-quaternary);
+  grid-column: container-start/container-end;
+  height: 600px;
 }
 /*# sourceMappingURL=main-style.css.map */
